@@ -1,0 +1,22 @@
+p {
+	font-size:.8em
+}
+
+.job {
+	background: #e9e5dc;
+	margin-top: 20px;
+	padding: 10px
+
+}
+
+.job ul {
+	font-size: .8em
+}
+
+.job ul:hover {
+	background: #4286f4;
+}
+
+li:first-child {
+    color: #59194d;
+}
