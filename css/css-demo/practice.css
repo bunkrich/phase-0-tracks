@@ -12,3 +12,11 @@ p {
 .job ul {
 	font-size: .8em
 }
+
+.job ul:hover {
+	background: #4286f4;
+}
+
+li:first-child {
+    color: #59194d;
+}
