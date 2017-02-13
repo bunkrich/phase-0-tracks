@@ -52,3 +52,24 @@ body {
   width: 960px;
 }
 
+@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #external-links {
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+p {
+  font-size: 10pt;
+}
+h1 {
+  font-size: 12pt;
+}
+}
