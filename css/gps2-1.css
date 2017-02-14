@@ -1,0 +1,32 @@
+* {
+  font-family: helvetica;
+}
+
+header {
+	background-color: white;
+  padding: 5px;
+}
+
+section.column-1 {
+  background-color: #ffd1fa;
+  display: inline-block;
+  width: 48%;
+  padding: 5px;
+  vertical-align: text-top;
+  
+  
+  }
+  
+section.column-2 {
+  background-color: #ffd1fa;
+  display: inline-block;
+  width: 48%;
+  padding: 5px;
+  vertical-align: text-top;
+}
+
+footer {
+  background-color: #eab9e5;
+  padding: 5px;
+  
+}
