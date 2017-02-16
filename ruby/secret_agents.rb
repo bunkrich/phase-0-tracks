@@ -1,7 +1,6 @@
 # caesar cipher 
-
-
 =begin
+#THIS IS OUR ORIGINAL CODE FOR ENCRYPT
 message = "abcdefghijklmnopqrstuvwxyz"
 
 
@@ -23,6 +22,8 @@ end
 cipher_word = encrypt(message)
 =end
 
+
+# ENCRYPT part of the code
 puts "What do you want to encrypt?"
 message = gets.chomp
 
@@ -48,7 +49,7 @@ end
 encrypt(message)
 
 
-
+# DECRYPT part of the code
 puts "what do you want to decrypt?"
 cipher_word1 = gets.chomp
 
