@@ -74,8 +74,4 @@ puts solution_word
 end
 
 # decrypt(cipher_word1)
-
-encrypt("swordfish")
-new_word = encrypt("swordfish")
-puts new_word
-decrypt("boys")
+decrypt(encrypt("swordfish"))
