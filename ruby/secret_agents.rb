@@ -1,7 +1,7 @@
 # caesar cipher 
 
 
-
+=begin
 message = "abcdefghijklmnopqrstuvwxyz"
 
 
@@ -21,10 +21,11 @@ def encrypt(message)
 puts cipher_word
 end
 cipher_word = encrypt(message)
+=end
 
-puts "what was the cipher word?"
+
+puts "what do you want to decrypt?"
 cipher_word1 = gets.chomp
-
 
 def decrypt(cipher_word1)
 
@@ -57,3 +58,32 @@ decrypt(cipher_word1)
 
 
 
+puts "what do you want to encrypt?"
+message = gets.chomp
+
+
+def encrypt(message)
+
+	message_length = message.length
+
+	current_index = 0
+
+	message_number = 0
+
+	cipher_number = 0
+	
+	cipher_word = ""
+
+	"abcdefghijklmnopqrstuvwxyza".index("cipher_letter")
+
+	until message_length == current_index 
+		message_letter = message[current_index]
+		message_number = "abcdefghijklmnopqrstuvwxyza".index(message_letter)
+		cipher_number = message_number + 1
+		cipher_letter = "abcdefghijklmnopqrstuvwxyza"[cipher_number]
+		current_index += 1
+		cipher_word = cipher_word + cipher_letter
+	end 
+puts cipher_word
+end
+encrypt(message)
