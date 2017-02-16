@@ -23,22 +23,16 @@ end
 cipher_word = encrypt(message)
 =end
 
-puts "what do you want to encrypt?"
+puts "What do you want to encrypt?"
 message = gets.chomp
 
 def encrypt(message)
-
 	message_length = message.length
-
 	current_index = 0
-
+	cipher_word = ""
 	message_number = 0
-
 	cipher_number = 0
 	
-	cipher_word = ""
-
-
 	until message_length == current_index 
 		message_letter = message[current_index]
 		message_number = "abcdefghijklmnopqrstuvwxyza".index(message_letter)
@@ -47,25 +41,23 @@ def encrypt(message)
 		current_index += 1
 		cipher_word = cipher_word + cipher_letter
 	end 
+
 puts cipher_word
 end
+
 encrypt(message)
+
+
 
 puts "what do you want to decrypt?"
 cipher_word1 = gets.chomp
 
 def decrypt(cipher_word1)
-
 	cipher_length = cipher_word1.length
-
 	current_index = 0
-
 	solution_word = ""
-
 	solution_number = 0
-
 	cipher_number = 0
-
 
 	until cipher_length == current_index 
 		cipher_letter = cipher_word1[current_index]
@@ -77,7 +69,6 @@ def decrypt(cipher_word1)
 	end 
 
 puts solution_word
-
 end
 
 decrypt(cipher_word1)
