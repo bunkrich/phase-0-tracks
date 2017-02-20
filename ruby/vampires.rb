@@ -16,10 +16,12 @@ p !(wolves_like_sunshine && wolves_like_garlic)
 puts "What is your name?"
 	employee_name = gets.chomp
 
+
 puts "How old are you?"
 	employee_age = gets.chomp.to_i
 	employee_year_test = 2017-employee_age
 	employee_year_test2 = employee_year_test - 1 #they could also be born in the year before if their birthday hasnt' happend yet
+
 
 puts "What year were you born?"
 	employee_year = gets.chomp.to_i
@@ -28,6 +30,7 @@ if employee_year == employee_year_test || employee_year == employee_year_test2
 else test_age = false
 end
 	p test_age
+
 
 puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
 	garlic_bread = gets.chomp
@@ -41,6 +44,7 @@ else likes_garlic = false
 end
 	p likes_garlic
 
+
 puts "Would you like to enroll in the company’s health insurance? (y/n)"
 		insruance = gets.chomp
 until insruance == "y" || insruance == "n"
@@ -52,3 +56,14 @@ if insruance == "y"
 else likes_insurnace = false
 end
 	p likes_insurnace
+
+if employee_name == "Drake Cula" || employee_name == "Tu Fang"
+	puts "Definitely a Vampire"
+elsif !test_age && !likes_garlic && !likes_insurnace
+	puts "Almost certainly a vampire."
+elsif !test_age && (!likes_garlic || !likes_insurnace)
+	puts "Probably a vampire."
+elsif test_age && (likes_garlic || likes_insurnace)
+	puts "Probably not a vampire."
+else puts "Results inclusive"
+end
