@@ -12,3 +12,27 @@
 	-when the doors open at the corresponding floor, exit the elevator quickly
 -Go to the desired location on the floor you are traveling to
 	-If you do not know where it is, play a loud beeping noise until someone comes to help
+
+
+**RLEASE 1**
+Getting the Mail
+-When you walk by the mailbox on your way home walk to your mailbox
+	-use your mail key and open the correct mailbox
+	-open mailbox, if there is no mail, close, lock and continue home.
+	-take out all the mail
+		-look at each piece of mail to check for roommates names
+		-if the name on the mail is a roommate put it in the keep pile
+		-if the name on the mail is generic (IE "resident of") put it in the keep pile
+		-if the name on the mail is an old roommate throw in the recycling bin
+		-if the address is wrong (IE another apartment until) put it on top of the mailbox
+	-from the keep pile
+		-throw away anything that is clearly junk mail
+			-anything colorful from a bank, credit card, political, or news
+			-If it is a promotional flier that you HAVE taken or used before, throw in recycling bin	
+		-Evey thing else stays in the keep pile
+	-from the keep pile, anything with BRENT UNKRICH on it
+		-open each piece of mail
+		-throw away the envelope
+	-close, lock the mailbox, go home with the mail to the apartment
+			-put the mail for BRENT UNKRICH on his deck
+			-put everything else on the mail table
