@@ -12,6 +12,11 @@ p vampires_like_garlic
 p !vampires_like_garlic
 p !(wolves_like_sunshine && wolves_like_garlic) 
 =end
+puts "How many emplyees will be processed"
+	employees_to_process = gets.chomp.to_i
+
+until employees_to_process == 0
+	emplpyees_to_process = employees_to_process -= 1
 
 puts "What is your name?"
 	employee_name = gets.chomp
@@ -29,7 +34,6 @@ if employee_year == employee_year_test || employee_year == employee_year_test2
 	test_age = true
 else test_age = false
 end
-	p test_age
 
 
 puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
@@ -42,7 +46,6 @@ if garlic_bread == "y"
 	likes_garlic = true
 else likes_garlic = false
 end
-	p likes_garlic
 
 
 puts "Would you like to enroll in the company’s health insurance? (y/n)"
@@ -55,7 +58,7 @@ if insruance == "y"
 	likes_insurnace = true
 else likes_insurnace = false
 end
-	p likes_insurnace
+
 
 if employee_name == "Drake Cula" || employee_name == "Tu Fang"
 	puts "Definitely a Vampire"
@@ -66,4 +69,5 @@ elsif !test_age && (!likes_garlic || !likes_insurnace)
 elsif test_age && (likes_garlic || likes_insurnace)
 	puts "Probably not a vampire."
 else puts "Results inclusive"
+end
 end
