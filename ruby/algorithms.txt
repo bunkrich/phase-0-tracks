@@ -1,0 +1,14 @@
+-Go to elevator bank
+	-Use the floor number that you are going to decide whether you are going up, down, or are already on the correct floor
+		-If the floor you are going to higher up push up
+		-If the floor you are going to lower push down
+		-If the floor you are going to is the floor you are on, leave the elevator bank	
+-Wait for the elevator to arrive
+	-Wait for the elevator to arrive that also matches the direction you are designated to travel (ignore all other elevators that are going the opposite direction)
+		-When the elevator in the right direction opens, quickly move to it, and enter the elevator (if it is full, repeat everything before and take the next available elevator)
+-Once inside, locate the buttons with the floor numbers
+	-push the button with the desired floor you are traveling to
+	-watch the numbers count up or down until you reach the desired floor
+	-when the doors open at the corresponding floor, exit the elevator quickly
+-Go to the desired location on the floor you are traveling to
+	-If you do not know where it is, play a loud beeping noise until someone comes to help
