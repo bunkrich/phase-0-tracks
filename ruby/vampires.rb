@@ -59,8 +59,19 @@ if insruance == "y"
 else likes_insurnace = false
 end
 
+allergies = ""
+sunshine = true
+puts "Do you have any allergies (type done when finsihed)"
+until allergies == "done" || sunshine == false
+	allergies = gets.chomp
+	if allergies == "sunshine"
+		sunshine = false
+	end
+end
 
-if employee_name == "Drake Cula" || employee_name == "Tu Fang"
+
+
+if !sunshine || employee_name == "Drake Cula" || employee_name == "Tu Fang"
 	puts "Definitely a Vampire"
 elsif !test_age && !likes_garlic && !likes_insurnace
 	puts "Almost certainly a vampire."
