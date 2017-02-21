@@ -11,12 +11,24 @@
 "zom".insert(2, 'o') 
 "zom".sub(/[o]/, 'oo') 
 # => “zoom”
+# Below: the method I created for this;
+def more_o(input_word)
+	puts input_word.gsub(/[o]/, 'oo')
+end
 
 "enhance".center(15)
 # => "    enhance    "
+# Below: the method I created for this;
+def fifteen_space_center(input_word)
+	puts input_word.center(15)
+end
 
 "Stop! You’re under arrest!".upcase
 # => "STOP! YOU’RE UNDER ARREST!"
+# Below: the method I created for this;
+def upper_case_all(input_word)
+	puts input_word.upcase
+end
 
 "the usual".ljust(18, " suspects")
 # => "the usual suspects"
@@ -44,3 +56,14 @@
 
 "How many times does the letter 'a' appear in this string?".count "a"
 # => 4
+
+# Testing out some of the methods I created.
+fifteen_space_center("enhance")
+fifteen_space_center("brent")
+fifteen_space_center("hello world")
+upper_case_all("enhance")
+upper_case_all("brent")
+upper_case_all("hello world")
+more_o("hello world")
+more_o("okoboji, iowa")
+more_o("cookbook operations")
