@@ -2,7 +2,7 @@
 Application = {
 }
 
-puts "We are so excited to be working with you, before we start we will need some info to best get to know your needs. Please fill out the questions below."
+puts "We are so excited to be working with you, before we get started, please fill out the questions below."
 puts ""
 
 #beginning of questions for user
@@ -68,6 +68,7 @@ puts ""
 #if they input "none" then the program will print final hash
 puts "Would you like to make any changes, if no please enter 'none'"
 puts "Which would you like to change"
+#key_to_change is the key they are able to type in in order to change it using to_sym.
 key_to_change = gets.chomp
   if key_to_change == "none"
     puts "Thank You!"
@@ -82,5 +83,5 @@ puts ""
 puts "Your final application is:"
 puts Application
 puts ""
-puts "We'll contact you shortly."
+puts "Thank you! We'll contact you shortly."
 puts "Have a great day."
