@@ -1,3 +1,4 @@
+#Puppy Class
 class Puppy
 
   def fetch(toy)
@@ -32,6 +33,7 @@ class Puppy
 
 end
 
+#Kitty Class
 class Kitty
 
 	def initialize
@@ -47,6 +49,8 @@ class Kitty
 	end
 end
 
+
+#Driver code for the Puppy class
 labrador = Puppy.new
 
 p labrador.fetch("ball")
@@ -59,16 +63,25 @@ p labrador.dog_years(3)
 
 p labrador.commands("sit")
 
+#Driver code for the Kitty class
 fluffy = Kitty.new
 
 p fluffy.sleep(4)
 
 p fluffy.purr("softly")
 
+#Array to hold all the cats
 Cat_family = []
 
+#filling the array with 50 new cats 
 50.times do 
 	kitty = Kitty.new
 	Cat_family << kitty 
 end
 p Cat_family
+
+#having each of the cats sleep and purr
+Cat_family.each do |cat| 
+	cat.sleep(2)
+	cat.purr("normal")
+end
