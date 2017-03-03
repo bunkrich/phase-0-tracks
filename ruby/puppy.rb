@@ -1,12 +1,12 @@
 #---Dog Type
-#pug, beagle, german shepherd, rottweiler, bulldog, etc
+#pug, beagle, German shepherd, rototiller, bulldog, etc
 
 #---Traits
 #Name
 #Color
 #Weight
 #Good with kids
-#Friendlyness
+#Friendliness
 #Protective
 
 #---Behavior
