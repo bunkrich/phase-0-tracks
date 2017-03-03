@@ -32,6 +32,21 @@ class Puppy
 
 end
 
+class Kitty
+
+	def initialize
+		puts "Welcome the new kitten to the family"
+	end
+
+	def sleep(hours)
+		puts "the kitten slept for #{hours} hours"
+	end
+
+	def purr(type_of_purr)
+		puts "the kitten is purring #{type_of_purr}"
+	end
+end
+
 labrador = Puppy.new
 
 p labrador.fetch("ball")
@@ -43,3 +58,17 @@ p labrador.roll_over
 p labrador.dog_years(3)
 
 p labrador.commands("sit")
+
+fluffy = Kitty.new
+
+p fluffy.sleep(4)
+
+p fluffy.purr("softly")
+
+Cat_family = []
+
+50.times do 
+	kitty = Kitty.new
+	Cat_family << kitty 
+end
+p Cat_family
