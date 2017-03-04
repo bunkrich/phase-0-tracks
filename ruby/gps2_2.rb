@@ -1,6 +1,17 @@
 # Method to create a list
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 
+grocery_old_list = "carrots apples cereal pizza"
+
+def transform_list(list)
+	grocery_array = list.split(' ')
+	example_list = {}
+	grocery_array.each do |item|
+		example_list[item] = 4
+	end
+	example_list
+end
+
 
 # steps: 
   # Create a hash that holds the name and quanitity
@@ -52,11 +63,14 @@ def print_list(list)
 	end
 end
 
-p add_item(grocery_list,"grape",4)
-p add_item(grocery_list,"carrot",5)
-p grocery_list
+# p add_item(grocery_list,"grape",4)
+# p add_item(grocery_list,"carrot",5)
+# p grocery_list
 # p delete_item(grocery_list,"grape")
-p grocery_list
-p update_quantity(grocery_list,"carrot",7)
-p grocery_list
-p print_list(grocery_list)
+# p grocery_list
+# p update_quantity(grocery_list,"carrot",7)
+# p grocery_list
+# p print_list(grocery_list)
+transformed_list = transform_list(grocery_old_list)
+print_list(transformed_list)
+# puts transformed_list
