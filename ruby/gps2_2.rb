@@ -12,7 +12,6 @@ def transform_list(list)
 	example_list
 end
 
-
 # steps: 
   # Create a hash that holds the name and quanitity
   # enter names / examples of products
@@ -20,8 +19,7 @@ end
   # print the list to the console -- Use last method to print
 # output: print out product and quantity in the hash
 
-grocery_list = { 
-}
+grocery_list = {}
 
 # Method to add an item to a list
 # input: list, item name, and optional quantity
@@ -31,8 +29,6 @@ grocery_list = {
 def add_item(list,new_item,item_count)
 	list[new_item] = item_count
 end
-
-
 
 # Method to remove an item from the list
 # input: get the hash/list name and the key to delete
@@ -63,6 +59,9 @@ def print_list(list)
 	end
 end
 
+
+
+#####DRIVER CODE#####
 # p add_item(grocery_list,"grape",4)
 # p add_item(grocery_list,"carrot",5)
 # p grocery_list
