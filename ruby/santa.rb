@@ -1,8 +1,12 @@
 #Release 0
 class Santa
 	
-	def initialize
+	def initialize (gender, ethnicity)
 		puts "Initializing Santa instance ..."
+		@gender = gender
+		@ethnicity = ethnicity
+		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+		@age = 0
 	end
 
 	def speak
@@ -13,10 +17,17 @@ class Santa
 		puts "That was a good #{cookie_type}!" 
 	end
 
+	def testing
+		p @gender
+		p @ethnicity
+		p @reindeer_ranking
+		p @age
+	end
 end
 
 #-----DRIVER CODE-----#
-bob = Santa.new
+bob = Santa.new("boy", "mixed")
 p bob.speak
 p bob.eat_milk_and_cookies("fatty")
 # p Santa.eat_milk_and_cookies("snickky")
+bob.testing
