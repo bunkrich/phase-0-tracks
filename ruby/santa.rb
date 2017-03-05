@@ -1,4 +1,3 @@
-#Release 0
 class Santa
 	
 	def initialize (gender, ethnicity)
@@ -17,6 +16,7 @@ class Santa
 		puts "That was a good #{cookie_type}!" 
 	end
 
+#-----IN CLASS DRIVER CODE-----#
 	def testing
 		p @gender
 		p @ethnicity
