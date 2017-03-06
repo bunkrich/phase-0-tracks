@@ -41,10 +41,17 @@ class Santa
 end
 
 # -----DRIVER CODE: RELEASE 4----- #
-bob = Santa.new
-p bob.gender
-p bob.ethnicity
-p bob.age
+count = 1
+# until loop that counts up to 140 and each time it makes a new santa then prints out it's info
+until count == 10
+		new_santa = Santa.new
+		puts "Santa Number #{count}:"
+		puts "  Gender: #{new_santa.gender}"
+		puts "  Ethnicity: #{new_santa.ethnicity}"
+		puts "  Age: #{new_santa.age}"
+		count = count += 1
+		p new_santa
+	end
 
 # -----DRIVER CODE----- #
 # bob = Santa.new("boy", "mixed")
