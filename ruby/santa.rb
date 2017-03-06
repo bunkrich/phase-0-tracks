@@ -37,7 +37,7 @@ end
 
 # -----DRIVER CODE: RELEASE 4----- #
 count = 1
-# until loop that counts up to 140 and each time it makes a new santa then prints out it's info
+# until loop that counts up to 101 and each time it makes a new santa then prints out it's info
 until count == 101
 		new_santa = Santa.new
 		puts "Santa ##{count}:"
