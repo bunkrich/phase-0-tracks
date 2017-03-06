@@ -59,18 +59,18 @@ end
 
 
 # ----- Driver Code -----#
-puts "Welcome to the Word Game!"
-#player one input
-secret_word_input = "unkrich"
-winner_word = WordGame.new(secret_word_input)
+# puts "Welcome to the Word Game!"
+# #player one input
+# secret_word_input = "unkrich"
+# winner_word = WordGame.new(secret_word_input)
 
-#player two input
-while !winner_word.is_over
-	puts "Guess a letter..."
-	guess_letter_input = gets.chomp
+# #player two input
+# while !winner_word.is_over
+# 	puts "Guess a letter..."
+# 	guess_letter_input = gets.chomp
 	
-	winner_word.guess_letter_multiple(guess_letter_input)
-	winner_word.guess_letter_check(guess_letter_input)
-	winner_word.guess_word_check
-	winner_word.count_check
-end
+# 	winner_word.guess_letter_multiple(guess_letter_input)
+# 	winner_word.guess_letter_check(guess_letter_input)
+# 	winner_word.guess_word_check
+# 	winner_word.count_check
+# end
