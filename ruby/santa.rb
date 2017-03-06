@@ -9,19 +9,21 @@ class Santa
 	end
 
 	def speak
-		puts "Ho, ho, ho! Haaaappy holidays!"
+		"Ho, ho, ho! Haaaappy holidays!"
 	end
 
 	def eat_milk_and_cookies(cookie_type)
-		puts "That was a good #{cookie_type}!" 
+		"That was a good #{cookie_type}!" 
 	end
 
 	def celebrate_birthday
 		@age =+ 1
 	end
 
-	def get_mad_at (bad_reindeer)
-		@reindeer_ranking[bad_reindeer].last
+	#Moves the bad reindeer from the array and then adds it to the end
+	def get_mad_at(bad_reindeer)
+		@reindeer_ranking.delete(bad_reindeer)
+		@reindeer_ranking << bad_reindeer
 	end
 
 	# Setter Method
@@ -31,7 +33,7 @@ class Santa
 
 	#Getter Method
 	def age
-		@name
+		@age
 	end
 
 	def ethnicity
@@ -47,14 +49,14 @@ class Santa
 	end
 end
 
-#-----DRIVER CODE-----#
+# -----DRIVER CODE----- #
 # bob = Santa.new("boy", "mixed")
 # p bob.speak
 # p bob.eat_milk_and_cookies("fatty")
 # # p Santa.eat_milk_and_cookies("snickky")
 # bob.testing
 
-# #-----DRIVER CODE: RELEASE 1-----#
+# -----DRIVER CODE: RELEASE 1----- #
 # santas = []
 # santas << Santa.new("agender", "black")
 # santas << Santa.new("female", "Latino")
@@ -65,7 +67,7 @@ end
 # santas << Santa.new("N/A", "N/A")
 # p santas
 
-# #-----DRIVER CODE: RELEASE 1. part 2-----#
+# -----DRIVER CODE: RELEASE 1. part 2----- #
 # santas = []
 # example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 # example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
@@ -74,3 +76,11 @@ end
 # end
 # p santas
 
+# -----DRIVER CODE: RELEASE 2----- #
+bob = Santa.new("boy", "mixed")
+p bob.speak
+p bob.celebrate_birthday
+p bob.get_mad_at("Dasher")
+p bob.gender = ("girl")
+p bob.age
+p bob.ethnicity
