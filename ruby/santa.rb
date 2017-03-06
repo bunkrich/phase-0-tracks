@@ -2,10 +2,12 @@ class Santa
 	attr_reader :ethnicity
 	attr_accessor :gender, :age
 
-	def initialize (gender, ethnicity)
+	def initialize #(gender, ethnicity)
 		puts "Initializing Santa instance ..."
-		@gender = gender
-		@ethnicity = ethnicity
+		@example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+		@example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+		@gender = @example_genders.sample
+		@ethnicity = @example_ethnicities.sample
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 		@age = 0
 	end
@@ -28,20 +30,6 @@ class Santa
 		@reindeer_ranking << bad_reindeer
 	end
 
-	# # Setter Method
-	# def gender=(updated_gender)
-	# 	@gender = updated_gender
-	# end
-
-	# #Getter Method
-	# def age
-	# 	@age
-	# end
-
-	# def ethnicity
-	# 	@ethnicity
-	# end
-
 #-----IN CLASS DRIVER CODE-----#
 	def testing
 		p @gender
@@ -50,6 +38,11 @@ class Santa
 		p @age
 	end
 end
+
+# -----DRIVER CODE: RELEASE 4----- #
+bob = Santa.new
+p bob.gender
+p bob.ethnicity
 
 # -----DRIVER CODE----- #
 # bob = Santa.new("boy", "mixed")
@@ -79,14 +72,13 @@ end
 # p santas
 
 # -----DRIVER CODE: RELEASE 2 & 3----- #
-bob = Santa.new("boy", "mixed")
-p bob.speak
-p bob.celebrate_birthday
-p bob.celebrate_birthday
-p bob.celebrate_birthday
-
-p bob.get_mad_at("Dasher")
-p bob.gender = ("girl")
-p bob.gender = ("woman")
-p bob.age
-p bob.ethnicity
+# bob = Santa.new("boy", "mixed")
+# p bob.speak
+# p bob.celebrate_birthday
+# p bob.celebrate_birthday
+# p bob.celebrate_birthday
+# p bob.get_mad_at("Dasher")
+# p bob.gender = ("girl")
+# p bob.gender = ("woman")
+# p bob.age
+# p bob.ethnicity
