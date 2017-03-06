@@ -2,14 +2,15 @@ class Santa
 	attr_reader :ethnicity
 	attr_accessor :gender, :age
 
-	def initialize #(gender, ethnicity)
+	def initialize #(gender, ethnicity) NO NEED to have these since they are down assigned below
 		puts "Initializing Santa instance ..."
 		@example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 		@example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 		@gender = @example_genders.sample
 		@ethnicity = @example_ethnicities.sample
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-		@age = 0
+		random_age = Random.new
+		@age = random_age.rand(100)
 	end
 
 	def speak
@@ -43,6 +44,7 @@ end
 bob = Santa.new
 p bob.gender
 p bob.ethnicity
+p bob.age
 
 # -----DRIVER CODE----- #
 # bob = Santa.new("boy", "mixed")
