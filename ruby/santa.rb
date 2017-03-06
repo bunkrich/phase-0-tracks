@@ -16,6 +16,28 @@ class Santa
 		puts "That was a good #{cookie_type}!" 
 	end
 
+	def celebrate_birthday
+		@age =+ 1
+	end
+
+	def get_mad_at (bad_reindeer)
+		@reindeer_ranking[bad_reindeer].last
+	end
+
+	# Setter Method
+	def gender=(updated_gender)
+		@gender = updated_gender
+	end
+
+	#Getter Method
+	def age
+		@name
+	end
+
+	def ethnicity
+		@ethnicity
+	end
+
 #-----IN CLASS DRIVER CODE-----#
 	def testing
 		p @gender
@@ -43,11 +65,12 @@ end
 # santas << Santa.new("N/A", "N/A")
 # p santas
 
-#-----DRIVER CODE: RELEASE 1. part 2-----#
-santas = []
-example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
-example_genders.length.times do |i|
-  santas << Santa.new(example_genders[i], example_ethnicities[i])
-end
-p santas
+# #-----DRIVER CODE: RELEASE 1. part 2-----#
+# santas = []
+# example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+# example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+# example_genders.length.times do |i|
+#   santas << Santa.new(example_genders[i], example_ethnicities[i])
+# end
+# p santas
+
