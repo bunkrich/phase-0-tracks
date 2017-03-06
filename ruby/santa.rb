@@ -1,7 +1,7 @@
 class Santa
-	attr_reader :age, :ethnicity
-	attr_accessor :gender
-	
+	attr_reader :ethnicity
+	attr_accessor :gender, :age
+
 	def initialize (gender, ethnicity)
 		puts "Initializing Santa instance ..."
 		@gender = gender
@@ -19,7 +19,7 @@ class Santa
 	end
 
 	def celebrate_birthday
-		@age =+ 1
+		@age += 1
 	end
 
 	#Moves the bad reindeer from the array and then adds it to the end
@@ -40,7 +40,7 @@ class Santa
 
 	# def ethnicity
 	# 	@ethnicity
-	end
+	# end
 
 #-----IN CLASS DRIVER CODE-----#
 	def testing
@@ -78,11 +78,15 @@ end
 # end
 # p santas
 
-# -----DRIVER CODE: RELEASE 2----- #
+# -----DRIVER CODE: RELEASE 2 & 3----- #
 bob = Santa.new("boy", "mixed")
 p bob.speak
 p bob.celebrate_birthday
+p bob.celebrate_birthday
+p bob.celebrate_birthday
+
 p bob.get_mad_at("Dasher")
 p bob.gender = ("girl")
+p bob.gender = ("woman")
 p bob.age
 p bob.ethnicity
