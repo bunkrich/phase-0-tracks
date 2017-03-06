@@ -16,7 +16,7 @@ module Shout
 	end
 
 	def yelling_happily(words)
-		words + " <3 >3" + " :) yaassss"
+		words + " <3 <3" + " :) yaassss"
 	end
 end
 
