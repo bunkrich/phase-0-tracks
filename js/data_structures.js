@@ -32,3 +32,7 @@ console.log(newcar);
 console.log("Car can speed");
 newcar.speed();
 console.log("----");
+
+// Release 3 Questions //
+// 1. Use the for...in loop and Object.keys forEach
+// 2. yes, becuase you have more information and it can be stored together.
