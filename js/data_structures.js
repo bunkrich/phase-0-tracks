@@ -14,4 +14,21 @@ for (var i = 0; i < colors.length; i++){
 	horsecolor = colors[i];
 	horseinfo [horsename] = horsecolor;
 }
-	console.log(horseinfo);
+	// console.log(horseinfo);
+
+function Car(make, model, color, year) {
+	console.log("Our new car:", this);
+	this.make = make;
+	this.model = model;
+	this.color = color;
+	this.year = year;
+	this.speed = function() { console.log("Fast!"); };
+	console.log("CAR");
+}
+
+console.log("Let's buy a car ...");
+var newcar = new Car("Ford", "Focus", "Blue", 2017);
+console.log(newcar);
+console.log("Car can speed");
+newcar.speed();
+console.log("----");
