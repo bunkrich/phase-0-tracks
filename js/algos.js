@@ -27,6 +27,35 @@ function compaire2(value) {
     }
 }
 
+
+function randomizerCount() {
+	var x = Math.floor((Math.random() * 10) + 1);
+	console.log (x);
+}
+
+function randomizerWord() {
+	var newword = [];
+	var alph = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+	var xlength = Math.floor((Math.random() * 20) + 1);
+	
+	for (var i = 0; i < xlength; i++){
+		var xalpha = Math.floor(Math.random() * 26);
+		var letter = alph[xalpha];
+		// console.log (letter);
+		newword.push(letter);
+		//console.log(newword);
+	}
+	var b = (newword.toString());
+  var c = (b.replace(/,/g,""));
+  console.log(c);
+}
+
+
+
+var a = randomizerWord();
+
+
+
 // ----- DRIVER CODE (Release 1) -----
 compaireBoth('name:', 'steven', 'age:', 7);
 compaireBoth('name:', 'steven', 'age:', 10);
