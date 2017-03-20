@@ -41,7 +41,7 @@ def menu_menu
 	elsif menu_input == 3
 		monthly_report(db)
 	else
-	puts "Goodbye :)"
+		puts "Goodbye :)"
 	end
 end
 
@@ -141,7 +141,7 @@ def user_input #UX
 		puts sorry
 		tip_out = gets.chomp.to_f
 	end
-	
+
 #call on the new_log method to add all of the info to the database once all the info is added
 new_log(tip_log.db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
 end
