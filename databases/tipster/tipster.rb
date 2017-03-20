@@ -2,9 +2,7 @@ require 'sqlite3'
 
 @db = SQLite3::Database.new("tip_log.db")
 @db.results_as_hash = true
-
 @line = "-------------------------------"
-
 #create a table if there isn't one yet
 create_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS tip_log(
@@ -21,8 +19,9 @@ create_table = <<-SQL
 	hourly_rate INT
 	)
 SQL
-
 @db.execute(create_table)
+
+
 
 #main user menu with 4 options for the user
 def main_menu
@@ -53,12 +52,14 @@ end
 def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
  	take_home = total_tips - tip_out
 	hourly_rate = take_home / hours_worked
-	@db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
+	@db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate])
+	puts @line
+	puts "Your data was successfully added to the database."
 	main_menu
 end
 
 
-#create a report for a specific server
+#create a report for all user input
 def server_report(db)
 	report = @db.execute("SELECT * FROM tip_log;")
 	puts "All server records:"
@@ -69,10 +70,11 @@ def server_report(db)
 		puts "Total Tips: $#{i['total_tips']}  |  Tip Out: $#{i['tip_out']}  |  Take Home: $#{i['take_home']}"
 		puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: $#{i['hourly_rate']}"
 	end
-		main_menu
+	main_menu #sends user back to main menu
 end
 
 
+#creates a report for a given month about the sales and tips
 def monthly_report(db)
 	puts "What month would you like a report for? (1-12)"
 	monthly_input = gets.chomp.to_i
@@ -86,9 +88,11 @@ def monthly_report(db)
 	puts "Monthly Sales: $#{@sales_z}"
 	puts "Monthly Total Tips: $#{@total_tips_z}"
 	puts "Monthly Total Hours Worked: #{@hours_worked_z}"
-	main_menu
+	main_menu #sends user back to main menu
 end
 	
+
+#the loop needed for the method above to iterate through the data	
 def monthly_report_loop(db, month)
 	report = @db.execute("SELECT * FROM tip_log WHERE month = '#{month}';")
 		@sales_z = 0
@@ -101,14 +105,15 @@ def monthly_report_loop(db, month)
 		@total_tips_z = @total_tips_z + total_tips_x
 		hours_worked_x = "#{i['hours_worked']}".to_f
 		@hours_worked_z = @hours_worked_z + hours_worked_x
-end
+	end
 end
 
 
-#user inputs new tip information
+#user inputs for new shift information
 def user_input #UX
 	#response for user to try again
 	sorry = "Please enter a more reasonable response."
+	puts @line
 
 	puts "What is the server's name?"
 	server_name = gets.chomp.downcase
