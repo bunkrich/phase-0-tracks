@@ -1,11 +1,12 @@
 require 'sqlite3'
 
-db = sqlite3::database.net("tip_log.db")
+@db = SQLite3::Database.new("tip_log.db")
+@db.results_as_hash = true
 
 @line = "-------------------------------"
 
-#create a database if there isn't one yet
-create_db = <<-SQL
+#create a table if there isn't one yet
+create_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS tip_log(
 	id INTEGER PRIMARY KEY,
 	server_name VARCHAR(255),
@@ -17,12 +18,14 @@ create_db = <<-SQL
 	total_tips INT,
 	tip_out INT,
 	take_home INT,
-	hourly_rate INT,
-	);
+	hourly_rate INT
+	)
 SQL
 
+@db.execute(create_table)
+
 #main user menu with 4 options for the user
-def menu_menu
+def main_menu
 	puts @line
 	puts "MAIN MENU: Please insert your choice (1-4)"
 	puts "1: Input a new server log."
@@ -37,9 +40,9 @@ def menu_menu
 	if menu_input == 1
 		user_input
 	elsif menu_input == 2
-		server_report(db)
+		server_report(@db)
 	elsif menu_input == 3
-		monthly_report(db)
+		monthly_report(@db)
 	else
 		puts "Goodbye :)"
 	end
@@ -48,10 +51,9 @@ end
 
 #adds a new log from a server
 def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
- 	@server_array << server_name
  	take_home = total_tips - tip_out
 	hourly_rate = take_home / hours_worked
-	db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
+	@db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
 end
 
 
@@ -59,14 +61,14 @@ end
 def server_report(db)
 	puts "Who would you like to get a server report for?"
 	server_name = gets.chomp
-	report = db.execute("SELECT * FROM tip_log,
-	WHERE tip_log.server_name = '#{server_name}';")
+	report = @db.execute("SELECT * FROM tip_log")
+	# WHERE tip_log.server_name = '#{server_name}';")
 	puts "Report for #{server_name}:"
-	report.each do |input|
+	report.each do |i|
 		puts @line
-		puts "#{month}/#{day}/#{year}: Sales: $#{sales}"
-		puts "Total Tips: $#{total_tips}  |  Tip Out: $#{tip_out}  |  Take Home: $#{take_home}"
-		puts "Hours Worked: #{hours_worked}  |  Hourly Rate: #{hourly_rate}"
+		puts "#{i['month']}/#{i['day']}/#{i['year']}: Sales: #{i['sales']}"
+		puts "Total Tips: #{i['total_tips']}  |  Tip Out: #{i['tip_out']}  |  Take Home: #{i['take_home']}"
+		puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: #{i['hourly_rate']}"
 	end
 end
 
@@ -143,12 +145,12 @@ def user_input #UX
 	end
 
 #call on the new_log method to add all of the info to the database once all the info is added
-new_log(tip_log.db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
+new_log(@db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
 end
 
 
 
 #-----MAIN PROGRAM-----#
 puts "Welcome to the Tipster, tip tracker program"
-main_menu() #sends user to main menu
+new_ex = main_menu #sends user to main menu
 
