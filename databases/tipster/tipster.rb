@@ -54,6 +54,7 @@ def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, 
  	take_home = total_tips - tip_out
 	hourly_rate = take_home / hours_worked
 	@db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
+	main_menu
 end
 
 
@@ -63,25 +64,44 @@ def server_report(db)
 	puts "All server records:"
 	report.each do |i|
 		puts @line
+		puts "SERVER: #{i['server_name']}"
 		puts "#{i['month']}/#{i['day']}/#{i['year']}: Sales: $#{i['sales']}"
 		puts "Total Tips: $#{i['total_tips']}  |  Tip Out: $#{i['tip_out']}  |  Take Home: $#{i['take_home']}"
 		puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: $#{i['hourly_rate']}"
 	end
+		main_menu
 end
 
 
 def monthly_report(db)
 	puts "What month would you like a report for? (1-12)"
-	month = gets.chomp.to_i
-	until month <= 12 && month >= 1
+	monthly_input = gets.chomp.to_i
+	until monthly_input <= 12 && monthly_input >= 1
 		puts "Please insert a number between 1 and 12."
-		month = gets.chomp.to_i
+		monthly_input = gets.chomp.to_i
 	end 
-	db.execute("SELECT * FROM tip_log WHERE month = '#{month}';")
+	monthly_report_loop(@db, monthly_input)
 	puts @line
-
-	# puts "Total Tips: $#{i['total_tips']}  |  Tip Out: $#{i['tip_out']}  |  Take Home: $#{i['take_home']}"
-	# puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: $#{i['hourly_rate']}"
+	puts "MONTLY REPORT:"
+	puts "Monthly Sales: $#{@sales_z}"
+	puts "Monthly Total Tips: $#{@total_tips_z}"
+	puts "Monthly Total Hours Worked: #{@hours_worked_z}"
+	main_menu
+end
+	
+def monthly_report_loop(db, month)
+	report = @db.execute("SELECT * FROM tip_log WHERE month = '#{month}';")
+		@sales_z = 0
+		@total_tips_z = 0
+		@hours_worked_z = 0
+	report.each do |i|
+		sales_x = "#{i['sales']}".to_i
+		@sales_z = @sales_z + sales_x
+		total_tips_x = "#{i['total_tips']}".to_i
+		@total_tips_z = @total_tips_z + total_tips_x
+		hours_worked_x = "#{i['hours_worked']}".to_f
+		@hours_worked_z = @hours_worked_z + hours_worked_x
+end
 end
 
 
