@@ -29,7 +29,7 @@ def main_menu
 	puts @line
 	puts "MAIN MENU: Please insert your choice (1-4)"
 	puts "1: Input a new server log."
-	puts "2: Create a server report."
+	puts "2: View all server inputs."
 	puts "3: Create a monthly report."
 	puts "4: Exit."
 	menu_input = gets.chomp.to_i
@@ -59,16 +59,13 @@ end
 
 #create a report for a specific server
 def server_report(db)
-	puts "Who would you like to get a server report for?"
-	server_name = gets.chomp
-	report = @db.execute("SELECT * FROM tip_log")
-	# WHERE tip_log.server_name = '#{server_name}';")
-	puts "Report for #{server_name}:"
+	report = @db.execute("SELECT * FROM tip_log;")
+	puts "All server records:"
 	report.each do |i|
 		puts @line
-		puts "#{i['month']}/#{i['day']}/#{i['year']}: Sales: #{i['sales']}"
-		puts "Total Tips: #{i['total_tips']}  |  Tip Out: #{i['tip_out']}  |  Take Home: #{i['take_home']}"
-		puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: #{i['hourly_rate']}"
+		puts "#{i['month']}/#{i['day']}/#{i['year']}: Sales: $#{i['sales']}"
+		puts "Total Tips: $#{i['total_tips']}  |  Tip Out: $#{i['tip_out']}  |  Take Home: $#{i['take_home']}"
+		puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: $#{i['hourly_rate']}"
 	end
 end
 
@@ -80,8 +77,11 @@ def monthly_report(db)
 		puts "Please insert a number between 1 and 12."
 		month = gets.chomp.to_i
 	end 
-	db.execute("SELECT * FROM tip_log,
-	WHERE tip_log.month = '#{month}';")
+	db.execute("SELECT * FROM tip_log WHERE month = '#{month}';")
+	puts @line
+
+	# puts "Total Tips: $#{i['total_tips']}  |  Tip Out: $#{i['tip_out']}  |  Take Home: $#{i['take_home']}"
+	# puts "Hours Worked: #{i['hours_worked']}  |  Hourly Rate: $#{i['hourly_rate']}"
 end
 
 
@@ -91,7 +91,7 @@ def user_input #UX
 	sorry = "Please enter a more reasonable response."
 
 	puts "What is the server's name?"
-	server_name = gets.chomp
+	server_name = gets.chomp.downcase
 	
 	puts "What is the date for the new entry?"
 	
