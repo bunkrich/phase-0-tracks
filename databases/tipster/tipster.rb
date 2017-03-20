@@ -17,7 +17,8 @@ create_db = <<-SQL
 	);
 SQL
 
-db = sqlite3::database.net("tip_lost.db")
+db = sqlite3::database.net("tip_log.db")
+
 
 #adds a new log from a server
 def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
@@ -25,6 +26,7 @@ def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, 
 	hourly_rate = take_home / hours_worked
 	user_input = db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
 end
+
 
 #user inputs new tip information
 def user_input #UX
@@ -86,6 +88,7 @@ def user_input #UX
 		tip_out = gets.chomp.to_f
 	end
 
+#call on the new_log method to add all of the info to the database once all the info is added
 new_log(tip_log.db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
 end
 
