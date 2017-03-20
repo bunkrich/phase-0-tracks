@@ -1,5 +1,9 @@
 require 'sqlite3'
 
+db = sqlite3::database.net("tip_log.db")
+
+@line = "-------------------------------"
+
 #create a database if there isn't one yet
 create_db = <<-SQL
 	CREATE TABLE IF NOT EXISTS tip_log(
@@ -17,20 +21,70 @@ create_db = <<-SQL
 	);
 SQL
 
-db = sqlite3::database.net("tip_log.db")
+#main user menu with 4 options for the user
+def menu_menu
+	puts @line
+	puts "MAIN MENU: Please insert your choice (1-4)"
+	puts "1: Input a new server log."
+	puts "2: Create a server report."
+	puts "3: Create a monthly report."
+	puts "4: Exit."
+	menu_input = gets.chomp.to_i
+	until menu_input <= 4 && menu_input >= 1
+		puts "Please type a number between 1 and 4"
+		menu_input = gets.chomp.to_i
+	end
+	if menu_input == 1
+		user_input
+	elsif menu_input == 2
+		server_report(db)
+	elsif menu_input == 3
+		monthly_report(db)
+	else
+	puts "Goodbye :)"
+	end
+end
 
 
 #adds a new log from a server
 def new_log(db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
+ 	@server_array << server_name
  	take_home = total_tips - tip_out
 	hourly_rate = take_home / hours_worked
-	user_input = db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
+	db.execute("INSERT INTO tip_log (server_name, day, month, year, hours_worked, sales, total_tips, tip_out, take_home, hourly_rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [server_name, day, month, year, total_tips, sales, total_tips, tip_out, take_home, hourly_rate])
+end
+
+
+#create a report for a specific server
+def server_report(db)
+	puts "Who would you like to get a server report for?"
+	server_name = gets.chomp
+	report = db.execute("SELECT * FROM tip_log,
+	WHERE tip_log.server_name = '#{server_name}';")
+	puts "Report for #{server_name}:"
+	report.each do |input|
+		puts @line
+		puts "#{month}/#{day}/#{year}: Sales: $#{sales}"
+		puts "Total Tips: $#{total_tips}  |  Tip Out: $#{tip_out}  |  Take Home: $#{take_home}"
+		puts "Hours Worked: #{hours_worked}  |  Hourly Rate: #{hourly_rate}"
+	end
+end
+
+
+def monthly_report(db)
+	puts "What month would you like a report for? (1-12)"
+	month = gets.chomp.to_i
+	until month <= 12 && month >= 1
+		puts "Please insert a number between 1 and 12."
+		month = gets.chomp.to_i
+	end 
+	db.execute("SELECT * FROM tip_log,
+	WHERE tip_log.month = '#{month}';")
 end
 
 
 #user inputs new tip information
 def user_input #UX
-
 	#response for user to try again
 	sorry = "Please enter a more reasonable response."
 
@@ -87,8 +141,14 @@ def user_input #UX
 		puts sorry
 		tip_out = gets.chomp.to_f
 	end
-
+	
 #call on the new_log method to add all of the info to the database once all the info is added
 new_log(tip_log.db, server_name, day, month, year, hours_worked, sales, total_tips, tip_out)
 end
+
+
+
+#-----MAIN PROGRAM-----#
+puts "Welcome to the Tipster, tip tracker program"
+main_menu() #sends user to main menu
 
