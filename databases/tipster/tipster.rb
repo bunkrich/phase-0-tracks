@@ -32,7 +32,7 @@ end
 def user_input #UX
 
 	#response for user to try again
-	sorry = "Please enter a more reasonable respnse."
+	sorry = "Please enter a more reasonable response."
 
 	puts "What is the server's name?"
 	server_name = gets.chomp
@@ -56,7 +56,7 @@ def user_input #UX
 	puts "Year (20**)?"
 	year = gets.chomp.to_i
 	until year <= 2200 && year >= 2000
-		puts "Please insert a 4 digit number (ie 2017)"
+		puts "Please insert a 4 digit number (i.e. 2017)"
 		year = gets.chomp.to_i
 	end 
 
