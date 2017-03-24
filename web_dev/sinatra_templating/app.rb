@@ -7,14 +7,26 @@ set :public_folder, File.dirname(__FILE__) + '/static'
 db = SQLite3::Database.new("students.db")
 db.results_as_hash = true
 
+cam = SQLite3::Database.new("campus.db")
+cam.results_as_hash = true
+
 # show students on the home page
 get '/' do
   @students = db.execute("SELECT * FROM students")
   erb :home
 end
 
+get '/' do
+  @campus = cam.execute("SELECT * FROM campus")
+  erb :home
+end
+
 get '/students/new' do
   erb :new_student
+end
+
+get '/campus/new' do
+  erb :new_campus
 end
 
 # create new students via
@@ -25,3 +37,9 @@ post '/students' do
 end
 
 # add static resources
+
+
+post '/campus' do
+  cam.execute("INSERT INTO campus (location) VALUES (?)", [params['location']])
+  redirect '/'
+end
