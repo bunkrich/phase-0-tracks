@@ -44,3 +44,51 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+
+
+#shows my address
+get '/contact' do
+  "165 W 26th St, New York, NY 10001"
+end
+
+#great job
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good Job, #{params[:name]}!!!"
+  else "Good Job!"
+  end
+end
+
+#adds 2 numbers
+get '/add/:num1/:num2' do
+  x = params[:num1]
+  y = params[:num2]
+  z = x.to_i + y.to_i
+  "#{x} + #{y} = #{z}"
+
+end
+
+#Searches and displays all students from one campus 
+get '/lookup/:campus' do
+  x = params[:campus]
+  students = db.execute("SELECT name, age FROM students WHERE campus = '#{x}';")
+  response = ""
+  students.each do |student|
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br><br>"
+  end
+  response
+end
+
+
+# Is Sinatra the only web app library in Ruby? What are some others?
+  # Puma, Thin, Unicorn
+
+# Are SQLite and the sqlite3 gem your only options for using a database with Sinatra? What are some others?
+  #Postgres 
+
+# What is meant by the term web stack?
+  #the stack of software such as source software with os, server, database, programing lang, etc
+  
