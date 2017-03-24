@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$("#but1").click(function(){
+		$("ul").hide();
+	});
+
+	$("#flip").click(function(){
+		$("#panel").slideDown("slow");
+	});
+
+	$("#but2").click(function(){
+		var div = $("div")
+			div.animate({left: '250px'}, {duration: 200, queue: false});
+			div.animate({width: '250px'}, {duration: 400, queue: false});
+			div.animate({height: '250px'}, {duration: 600, queue: false});
+			div.animate({fontSize: '3em'}, {duration: 800, queue: false});
+	});
+});
+</script>
+
+<style> 
+	body {
+		font-family: helvetica;
+	}
+	#panel, #flip {
+		padding: 5px;
+		background-color: #ff2be1;
+	}
+	#panel {
+		padding: 10px;
+		padding-left: 25px;
+		display: none;
+		background-color: #ff73eb;
+
+	}
+	div {
+		text-align: center;
+		background: #32cd32;
+		height: 150px;
+		width: 150px;
+		position: absolute;
+	}
+</style>
+</head>
+
+<body>
+
+<h1>Hello World</h1>
+	<p>Welcome to <strong>Earth</strong>, we are glad you are here.</p>
+	<p>There are so many great places to visit while you are here.</p>
+	<p>You should check out these hot spots while on Earth.</p>
+	<ul>
+		<li>Mexico</li>
+		<li>Canada</li>
+		<li>China</li>
+		<li>France</li>
+		<li>Indea</li>
+	</ul>
+	<p></p>
+	
+<button id="but1">Click me to hide the list</button>
+
+<h2 id="flip">Don't forget to:</h2>
+	<ol id="panel">
+		<li>Be nice</li>
+		<Li>Drink lots of water</Li>
+		<li>Have fun</li>
+		<li>Make new friends</li>
+		<li>If you get lost, use this <a href="https://www.google.com/maps">map of earth</a>
+	</ol>
+
+<button id="but2">Click me move</button><br><br>
+
+<div><h3>Have Fun!</h3></div>
+
+	
+</body>
+</html>
