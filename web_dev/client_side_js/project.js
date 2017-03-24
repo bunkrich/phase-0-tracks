@@ -1,5 +1,3 @@
-console.log("The script is running!");
-
 function addBlurSepia(event) {
   console.log("click happened! here's the click event:");
   console.log(event);
